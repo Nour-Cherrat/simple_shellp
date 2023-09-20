@@ -27,6 +27,11 @@ int display_history(__attribute__((unused)) char **cmd, __attribute__((unused)) 
 int is_builtin(char **command);
 int execute_builtin(char **command, int status);
 void exit_builtin(char **command, char *input_str, char **argv_list, int execution_count, int exit_status);
+void display_all_help(void);
+void display_alias_help(void);
+void display_cd_help(void);
+void display_exit_help(void);
+void display_help_help(void);
 
 
 
