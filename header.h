@@ -1,9 +1,6 @@
 #ifndef HEADER_H
 #define HEADER_H
 
-#define PRINT(c) (write(STDERR_FILENO, c, _strlen(c)))
-#define BUFSIZE 10240
-#define DELIMITER " \t\r\n\a"
 
 #include <stdio.h>
 #include <unistd.h>
@@ -16,6 +13,24 @@
 #include <fcntl.h>
 #include <errno.h>
 #include <linux/limits.h>
+
+char *get_user_input(void);
+char *remove_whitespace(char *str);
+void remove_comments(char *input);
+int main(void);
+unsigned int is_delimiter(char c, const char *delimiters);
+char *custom_strtok(char *str, const char *delimiters);
+
+
+
+
+
+
+
+#define PRINT(c) (write(STDERR_FILENO, c, _strlen(c)))
+#define BUFSIZE 10240
+#define DELIMITER " \t\r\n\a"
+
 
 char *_strncpy(char *dest, char *src, int n);
 int _strlen(char *s);
@@ -40,7 +55,6 @@ void *_calloc(unsigned int size);
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 void free_all(char **input, char *line);
 
-char *_getline(void);
 char *space(char *str);
 char *enter(char *string);
 void hashtag_handler(char *buff);
