@@ -1,35 +1,35 @@
 #include "header.h"
 
 /**
- * _getline - retrieve input from the user through the standard input
+ * _getline - read input from standard input by user
  * Return: the input on a buffer
  */
 char *_getline()
 {
-	int x, red, bufsize = BUFSIZE;
+	int i, rd, buffsize = BUFSIZE;
 	char c = 0, *buffer, *buf;
 
-	buffer = malloc(bufsize);
+	buffer = malloc(buffsize);
 	if (buffer == NULL)
 	{
 		free(buffer);
 		return (NULL);
 	}
-	for (x = 0; c != EOF && c != '\n'; x++)
+	for (i = 0; c != EOF && c != '\n'; i++)
 	{
 		fflush(stdin);
-		red = read(STDIN_FILENO, &c, 1);
-		if (red == 0)
+		rd = read(STDIN_FILENO, &c, 1);
+		if (rd == 0)
 		{
 			free(buffer);
 			exit(EXIT_SUCCESS);
 		}
-		buffer[x] = c;
+		buffer[i] = c;
 		if (buffer[0] == '\n')
 			return (enter(buffer));
-		if (x >= bufsize)
+		if (i >= buffsize)
 		{
-			buffer = realloc(buffer, (bufsize + 2));
+			buffer = realloc(buffer, (buffsize + 2));
 			if (buffer == NULL)
 			{
 				free(buffer);
@@ -37,7 +37,7 @@ char *_getline()
 			}
 		}
 	}
-	buffer[x] = '\0';
+	buffer[i] = '\0';
 	buf = space(buffer);
 	free(buffer);
 	hashtag_handler(buf);
@@ -45,7 +45,7 @@ char *_getline()
 }
 
 /**
- * enter - manages input containing newline characters
+ * enter - Handles newline character input
  * @string: String to be handled
  * Return: Empty string
  */
@@ -56,13 +56,13 @@ char *enter(char *string)
 }
 
 /**
- * space - Alters the input string to eliminate leading white spaces
+ * space - Modifies the input string to remove preceeding whitespaces
  * @str: Input to be modifies
  * Return: Returns the modified string
  */
 char *space(char *str)
 {
-	int k, j = 0;
+	int i, j = 0;
 	char *buff;
 
 	buff = malloc(sizeof(char) * (_strlen(str) + 1));
@@ -71,11 +71,11 @@ char *space(char *str)
 		free(buff);
 		return (NULL);
 	}
-	for (k = 0; str[k] == ' '; k++)
+	for (i = 0; str[i] == ' '; i++)
 		;
-	for (; str[k + 1] != '\0'; k++)
+	for (; str[i + 1] != '\0'; i++)
 	{
-		buff[j] = str[k];
+		buff[j] = str[i];
 		j++;
 	}
 	buff[j] = '\0';
@@ -88,19 +88,19 @@ char *space(char *str)
 }
 
 /**
- * hashtag_handler - eliminates all content following the '#' symbol
+ * hashtag_handler - function that removes everything after '#'
  * @buff: input buffer
  * Return: nothing
  */
 void hashtag_handler(char *buff)
 {
-	int l;
+	int i;
 
-	for (l = 0; buff[l] != '\0'; l++)
+	for (i = 0; buff[i] != '\0'; i++)
 	{
-		if (buff[l] == '#' && buff[l - 1] == ' ' && buff[l + 1] == ' ')
+		if (buff[i] == '#' && buff[i - 1] == ' ' && buff[i + 1] == ' ')
 		{
-			buff[l] = '\0';
+			buff[i] = '\0';
 		}
 	}
 }
