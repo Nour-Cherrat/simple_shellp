@@ -3,6 +3,7 @@
 /**
  * enter - Handles newline character input
  * @string: String to be handled
+ *
  * Return: Empty string
  */
 char *enter(char *string)
