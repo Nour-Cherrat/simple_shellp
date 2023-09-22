@@ -4,7 +4,7 @@
  * enter - Handles newline character input
  * @string: String to be handled
  *
- * Return: Empty string
+ * Return: Pointer to an empty string
  */
 char *enter(char *string)
 {
