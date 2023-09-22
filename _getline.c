@@ -94,7 +94,7 @@ char *space(char *str)
  */
 void hashtag_handler(char *buff)
 {
-	int i;
+	int l;
 
 	for (l = 0; buff[l] != '\0'; l++)
 	{
@@ -104,4 +104,3 @@ void hashtag_handler(char *buff)
 		}
 	}
 }
-
