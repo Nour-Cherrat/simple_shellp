@@ -42,7 +42,7 @@ int change_dir(char **cmd, __attribute__((unused))int st)
  */
 int dis_env(__attribute__((unused)) char **cmd, __attribute__((unused)) int st)
 {
-	size_t i;
+	size_t k;
 	int len;
 
 	for (k = 0; environ[k] != NULL; k++)
